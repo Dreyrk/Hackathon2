@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+
 import AllFireStation from "../pages/AllFireStation";
 import FireStationPage from "../pages/FireStationPage";
 import CreateUser from "../pages/CreateUser";
