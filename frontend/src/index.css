@@ -2,13 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
 .leaflet-container {
-    width: 50vw;
-    height: 60vh;
-    z-index: 0;
-  }
+  width: 50vw;
+  height: 60vh;
+  z-index: 0;
+}
 
-  .navbar div .active {
-    background-color: aquamarine;
-  }
+.navbar div .active {
+  background-color: #860f0f;
+}

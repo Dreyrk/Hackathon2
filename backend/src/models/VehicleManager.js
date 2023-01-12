@@ -6,6 +6,10 @@ class VehicleManager extends AbstractManager {
     super({ table: "vehicle" });
   }
 
+  findAll() {
+    return this.connection.query(`select * from ${this.table}`);
+  }
+
   insert(vehicle) {
     return this.connection.query(
       `INSERT INTO ${this.table} (modele, category, is_available, in_maintenance)
@@ -15,7 +19,7 @@ class VehicleManager extends AbstractManager {
         vehicle.category,
         vehicle.is_available,
         vehicle.in_maintenance,
-        vehicle.caserne_id,
+        vehicle.firestation_id,
       ]
     );
   }
@@ -23,13 +27,13 @@ class VehicleManager extends AbstractManager {
   update(vehicle) {
     return this.connection.query(
       `UPDATE ${this.table} SET modele = ?, category = ?, in_maintenance = ?,
-      is_available = ?, caserne_id = ? WHERE id = ? `,
+      is_available = ?, firestation_id = ? WHERE id = ? `,
       [
         vehicle.modele,
         vehicle.category,
         vehicle.is_available,
         vehicle.in_maintenance,
-        vehicle.caserne_id,
+        vehicle.firestation_id,
         vehicle.id,
       ]
     );
@@ -39,6 +43,28 @@ class VehicleManager extends AbstractManager {
     return this.connection.query(
       `UPDATE ${this.table} SET is_available = ? WHERE id = ?`,
       [is_available, id]
+    );
+  }
+
+  findVehicleByFirestation(firestationId) {
+    return this.connection.query(
+      `select * from ${this.table}
+    where firestation_id=?`,
+      [firestationId]
+    );
+  }
+
+  moveVehicle(firestationId, vehicleId) {
+    return this.connection.query(
+      `UPDATE ${this.table} SET firestation_id = ? WHERE id = ? `,
+      [firestationId, vehicleId]
+    );
+  }
+
+  inMaintenance(id, value) {
+    return this.connection.query(
+      `UPDATE ${this.table} SET in_maintenance = ? WHERE id = ? `,
+      [value, id]
     );
   }
 }

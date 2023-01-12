@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
+import { useCurrentUserContext } from "../contexts/userContext";
 import createuser from "../assets/New Project(17).png";
 
 const backURL = import.meta.env.VITE_BACKEND_URL;
@@ -13,6 +14,8 @@ export default function CreateUser() {
   const [rights, setRights] = useState(0);
   const [redForm, setRedForm] = useState([]);
 
+  const { token } = useCurrentUserContext();
+
   const handleSubmit = (e) => {
     if (
       firstname !== "" &&
@@ -23,12 +26,13 @@ export default function CreateUser() {
     ) {
       const myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("authorization", `Bearer ${token}`);
 
       const body = JSON.stringify({
         firstname,
         lastname,
-        rights,
         email,
+        rights,
         password,
       });
 
@@ -39,7 +43,7 @@ export default function CreateUser() {
       };
       e.preventDefault();
       // on créé un nouvel utilisateur et on reutilise
-      fetch(`${backURL}/inscription`, requestOptions).catch((err) => {
+      fetch(`${backURL}/api/users`, requestOptions).catch((err) => {
         console.warn(err);
       });
     } else {

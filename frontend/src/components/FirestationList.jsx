@@ -7,7 +7,7 @@ export default function FirestationList() {
   const [firesta, setfiresta] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/caserne`)
+    fetch(`http://localhost:5000/api/firestation`)
       .then((results) => results.json())
       .then((datas) => {
         setfiresta(datas);
@@ -15,7 +15,7 @@ export default function FirestationList() {
   }, []);
 
   return (
-    <div className="px-4 sm:px-6 lg:px-8 mt-[2rem]">
+    <div className="w-[60rem] mt-[2rem]">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Firestations</h1>
@@ -48,12 +48,7 @@ export default function FirestationList() {
                     >
                       Name
                     </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Localisation
-                    </th>
+
                     <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
@@ -69,14 +64,16 @@ export default function FirestationList() {
                       onClick={() => navigate("/all-truck")}
                     >
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {Firestation.img}
+                        <img
+                          src={Firestation.img}
+                          alt=""
+                          className="w-[15rem] h-[10rem]"
+                        />
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {Firestation.name}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {Firestation.Localisation}
-                      </td>
+
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {Firestation.capacity}
                       </td>

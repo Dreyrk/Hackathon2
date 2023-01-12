@@ -88,6 +88,47 @@ const destroy = (req, res) => {
     });
 };
 
+const vehiclesByFirestation = (req, res) => {
+  const { id } = req.params;
+  models.vehicle
+    .findVehicleByFirestation(id)
+    .then(([results]) => {
+      res.send(results);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
+const moveVehicle = (req, res) => {
+  const { firestationId, vehicleId } = req.body;
+  models.vehicle
+    .moveVehicle(firestationId, vehicleId)
+    .then(([result]) => {
+      if (result.affectedRows === 0) res.sendStatus(404);
+      else res.sendStatus(204);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
+const inMaintenance = (req, res) => {
+  const { id, value } = req.body;
+  models.vehicle
+    .inMaintenance(id, value)
+    .then(([result]) => {
+      if (result.affectedRows === 0) res.sendStatus(404);
+      else res.sendStatus(204);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -95,4 +136,7 @@ module.exports = {
   edit,
   destroy,
   changeavailable,
+  vehiclesByFirestation,
+  moveVehicle,
+  inMaintenance,
 };

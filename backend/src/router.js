@@ -12,7 +12,7 @@ const {
 } = require("./services/auth");
 
 const authControllers = require("./controllers/authControllers");
-const Firestation = require("./controllers/FirestationControllers");
+const firestationControllers = require("./controllers/firestationControllers");
 const vehicleControllers = require("./controllers/vehicleControllers");
 const userControllers = require("./controllers/userControllers");
 const fileControllers = require("./controllers/fileControllers");
@@ -25,16 +25,23 @@ router.post(
   verifyPassword
 );
 
-// Gestion des casernes
-router.get("/api/firestation", Firestation.browse);
-router.get("/api/firestation/:id", Firestation.read);
-router.post("/api/firestation", Firestation.add);
-router.put("/api/firestation/:id", Firestation.edit);
-router.delete("/api/firestation/:id", Firestation.destroy);
+// Gestion des firestations
+router.get("/api/firestation", firestationControllers.browse);
+router.get("/api/firestation/:id", firestationControllers.read);
+router.post("/api/firestation", firestationControllers.add);
+router.put("/api/firestation/:id", firestationControllers.edit);
+router.delete("/api/firestation/:id", firestationControllers.destroy);
 
 // Gestion des vehicles
 router.get("/api/vehicle", vehicleControllers.browse);
 router.get("/api/vehicle/:id", vehicleControllers.read);
+router.get(
+  "/api/vehicle/firestation/:id",
+  vehicleControllers.vehiclesByFirestation
+);
+router.put("/api/vehicle/move", vehicleControllers.moveVehicle);
+router.put("/api/vehicle/maintenance", vehicleControllers.inMaintenance);
+
 router.post("/api/vehicle", vehicleControllers.add);
 router.put("/api/vehicle/:id", vehicleControllers.edit);
 router.put("/api/vehicle/", vehicleControllers.changeavailable);
@@ -43,7 +50,13 @@ router.delete("/api/vehicle/:id", vehicleControllers.destroy);
 // Gestion des users
 router.get("/api/users", userControllers.browse);
 router.get("/api/users/:id", userControllers.read);
-router.post("/api/users", hashPassword, userControllers.add);
+router.post(
+  "/api/users",
+  verifyToken,
+  authControllers.userIsSuperAdmin,
+  hashPassword,
+  userControllers.add
+);
 router.put("/api/users/:id", hashPassword, verifyToken, userControllers.edit);
 router.delete("/api/users/:id", verifyToken, userControllers.destroy);
 
