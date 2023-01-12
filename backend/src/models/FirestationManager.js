@@ -11,9 +11,15 @@ class CaserneManager extends AbstractManager {
 
   insert(caserne) {
     return this.connection.query(
-      `INSERT INTO ${this.table} (capacity, longitude, latitude)
-    VALUES(?,?,?)`,
-      [caserne.capacity, caserne.longitude, caserne.latitude]
+      `INSERT INTO ${this.table} (name, capacity, longitude, latitude, img)
+    VALUES(?,?,?,?,?)`,
+      [
+        caserne.name,
+        caserne.capacity,
+        caserne.longitude,
+        caserne.latitude,
+        caserne.img,
+      ]
     );
   }
 
