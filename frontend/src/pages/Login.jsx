@@ -7,7 +7,6 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -42,40 +41,45 @@ function Login() {
   };
 
   return (
-    <>
-      <form
-        onSubmit={handleSubmit}
-        style={{ width: "18rem" }}
-        className="m-auto mt-5"
-      >
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email
-          </label>
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            className="form-control"
-            id="email"
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            className="form-control"
-            id="password"
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Connexion
-        </button>
-      </form>
+    <div className="w-[50rem] h-96 bg-blue-900 shadow-2xl rounded-lg mx-auto text-center py-12 mt-4 mt-[10rem]">
+      <h1 className="text-gray-200 text-center font-extrabold mt-3 mb-2 text-3xl">
+        Connectez-vous
+      </h1>
+      <div className="container py-5 max-w-md mx-auto">
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Username"
+              className="shadow appearance-none rounded w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="username"
+              type="text"
+            />
+          </div>
+          <div className="mb-6">
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className="shadow appearance-none  rounded w-full py-4 px-3 mb-3 mt-2 leading-tight focus:outline-none focus:shadow-outline"
+              id="password"
+              type="password"
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <button
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold h-[4rem]  py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
+            >
+              <h3 className="text-lg">Sign In</h3>
+            </button>
+            <p className="text-white underline cursor-pointer">
+              Forgot Password?
+            </p>
+          </div>
+        </form>
+      </div>
       <div>{errorMessage}</div>
-    </>
+    </div>
   );
 }
 
