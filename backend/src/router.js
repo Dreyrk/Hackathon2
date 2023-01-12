@@ -51,8 +51,7 @@ router.get("/api/users", userControllers.browse);
 router.get("/api/users/:id", userControllers.read);
 router.post(
   "/api/users",
-  verifyToken,
-  authControllers.userIsSuperAdmin,
+
   hashPassword,
   userControllers.add
 );
