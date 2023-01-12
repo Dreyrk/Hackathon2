@@ -1,39 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import TruckInfos from "./TruckInfos";
 
 export default function TruckModal() {
+  const [description, setDescription] = useState("");
   return (
-    <div className="m-2 p-2 h-[75vh] w-[80vw] flex flex-wrap justify-between bg-slate-200 border-solid">
-      <div className="h-[45vh] w-1/2 bg-slate-100 m-2 p-4 flex-col justify-around shadow-md">
-        <div className="flex flex-wrap items-end">
-          <h2 className="w-1/3 text-xl h-full pb-6 font-bold">
-            Recapitulatif :
-          </h2>
-          <img
-            className="h-60 w-96"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Pompiers_Strasbourg_-_Renault_Midlum-5.JPG/1200px-Pompiers_Strasbourg_-_Renault_Midlum-5.JPG"
-            alt="camion"
-          />
-        </div>
-      </div>
-      <div className="m-2 w-[35vw] h-[45vh] h-1/ flex flex-wrap bg-slate-100 shadow-md">
-        <div className="p-2">
-          <h4 className="text-xl text font-bold">Camion Réservé</h4>
-        </div>
-        <p className="w-full h-1/2 self-end px-2">
-          Descriptioo kdid idizi idiizjdidin izdig jduihzd uazdbhuizebndb
-          jadbbuizbd habdionbazb dbubbidjidzi,zin ooooooooooon
+    <div className="m-2 p-2 h-[75vh] w-[80vw] flex flex-wrap justify-between border-4 rounded-2xl border-gray-300 border-solid">
+      <TruckInfos description={description} />
+      <div className="w-full h-[20vh] mx-2 mb-4 bg-slate-200 rounded-md">
+        <p className="p-2">
+          {description !== "" ? description : "Pas de description :/"}
         </p>
-      </div>
-
-      <div className="w-full h-[20vh] bg-slate-200 mb-4">
-        <label htmlFor="message">
-          Message :
-          <textarea
-            className="h-full w-full border shadow-lg"
-            placeholder="Type a description of incident..."
-            type="text-area"
-          />
-        </label>
       </div>
     </div>
   );
