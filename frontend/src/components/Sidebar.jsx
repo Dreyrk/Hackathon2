@@ -12,7 +12,7 @@ export default function Sidebar() {
           Dashboard
         </NavLink>
         <NavLink
-          to="/events"
+          to="/intervention"
           className="h-[8vh] border-b border-slate-400/50 w-full flex justify-center items-center text-white text-lg"
         >
           Intervention
