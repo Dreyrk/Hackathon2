@@ -15,22 +15,16 @@ export default function Sidebar() {
           to="/events"
           className="h-[8vh] border-b border-slate-400/50 w-full flex justify-center items-center text-white text-lg"
         >
-          Intervention{" "}
+          Intervention
         </NavLink>
         <NavLink
-          to="/vehicles"
-          className="h-[8vh] border-b border-slate-400/50 w-full flex justify-center items-center text-white text-lg"
-        >
-          Vehicles
-        </NavLink>
-        <NavLink
-          to="/firestations"
+          to="/fire-station-page"
           className="h-[8vh] border-b border-slate-400/50 w-full flex justify-center items-center text-white text-lg"
         >
           Firestations
         </NavLink>
         <NavLink
-          to="/createuser"
+          to="/create-user"
           className="h-[8vh] border-b border-slate-400/50 w-full flex justify-center items-center text-white text-lg"
         >
           Users

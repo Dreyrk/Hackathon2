@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Firestations = [
   {
@@ -10,6 +11,7 @@ const Firestations = [
 ];
 
 export default function FirestationList() {
+  const navigate = useNavigate();
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
@@ -60,7 +62,10 @@ export default function FirestationList() {
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {Firestations.map((Firestation) => (
-                    <tr key={Firestation.id}>
+                    <tr
+                      key={Firestation.id}
+                      onClick={() => navigate("/all-truck")}
+                    >
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                         {Firestation.Picture}
                       </td>

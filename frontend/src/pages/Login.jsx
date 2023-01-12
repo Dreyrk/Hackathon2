@@ -41,7 +41,7 @@ function Login() {
   };
 
   return (
-    <div className="w-[50rem] h-96 bg-blue-900 shadow-2xl rounded-lg mx-auto text-center py-12 mt-4 mt-[10rem]">
+    <div className="w-[50rem] h-96 bg-[#293A4E] shadow-2xl rounded-lg mx-auto text-center py-12 mt-[10rem]">
       <h1 className="text-gray-200 text-center font-extrabold mt-3 mb-2 text-3xl">
         Connectez-vous
       </h1>
@@ -50,9 +50,9 @@ function Login() {
           <div className="mb-4">
             <input
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Username"
+              placeholder="email"
               className="shadow appearance-none rounded w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="username"
+              id="email"
               type="text"
             />
           </div>

@@ -1,11 +1,10 @@
 import React from "react";
-
-import FireStationInfo from "../components/FireStationInfo";
+import FirestationList from "../components/FirestationList";
 
 function FireStationPage() {
   return (
-    <div>
-      <FireStationInfo />
+    <div className="">
+      <FirestationList />
     </div>
   );
 }

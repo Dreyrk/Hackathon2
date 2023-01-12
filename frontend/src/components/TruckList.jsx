@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Trucks = [
   {
@@ -12,19 +13,12 @@ const Trucks = [
 ];
 
 export default function TruckList() {
+  const navigate = useNavigate();
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Truck</h1>
-        </div>
-        <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-          >
-            Add truck
-          </button>
         </div>
       </div>
       <div className="mt-8 flex flex-col">
@@ -68,7 +62,7 @@ export default function TruckList() {
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {Trucks.map((Truck) => (
-                    <tr key={Truck.id}>
+                    <tr key={Truck.id} onClick={() => navigate("/truck-infos")}>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                         {Truck.Picture}
                       </td>
@@ -91,6 +85,12 @@ export default function TruckList() {
             </div>
           </div>
         </div>
+        <button
+          type="button"
+          className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
+        >
+          Add truck
+        </button>
       </div>
     </div>
   );
