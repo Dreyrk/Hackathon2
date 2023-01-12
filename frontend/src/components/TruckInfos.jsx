@@ -23,7 +23,7 @@ export default function TruckInfos({ description }) {
         <p className="w-full h-1/2 self-end px-2">
           {description !== ""
             ? description
-            : "Faites votre rapport pour justifier la reservation du camion"}
+            : "Faites votre rapport pour justifier la reservation du Camion"}
         </p>
       </div>
     </>
