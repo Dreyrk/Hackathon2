@@ -3,7 +3,7 @@ import React from "react";
 
 function Home() {
   return (
-    <div className="justify-center flex items-center h-[88vh] relative">
+    <div className="justify-center flex items-center h-fit">
       <Map />
     </div>
   );
