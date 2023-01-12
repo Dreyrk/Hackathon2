@@ -24,11 +24,7 @@ export default function Sidebar() {
         <NavLink to="/all-fire-station">
           <img alt="fire" className="h-12" src={House} />
         </NavLink>
-        <NavLink to="/all-truck">
-
-        <NavLink to="/">
-          <img alt="fire" className="h-12" src={House} />
-        </NavLink>
+        <NavLink to="/all-truck">dzuohdibzeedb</NavLink>
         <NavLink to="/vehicles">
           <img alt="fire" className="h-12" src={Camion} />
         </NavLink>
