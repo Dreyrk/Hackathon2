@@ -33,6 +33,16 @@ class VehicleManager extends AbstractManager {
       ]
     );
   }
+
+  isavailable() {
+    return this.connection.query(`select * from  ${this.table} where is_available = 1`);
+  }
+
+  inMaintenance() {
+    return this.connection.query(`select * from  ${this.table} where in_maintenance = 0`);
+  }
+
+ 
 }
 
 module.exports = VehicleManager;

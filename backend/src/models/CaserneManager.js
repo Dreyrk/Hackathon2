@@ -2,7 +2,7 @@ const AbstractManager = require("./AbstractManager");
 
 class CaserneManager extends AbstractManager {
   constructor() {
-    super({ table: "caserne" });
+    super({ table: "firestation" });
   }
 
   insert(caserne) {

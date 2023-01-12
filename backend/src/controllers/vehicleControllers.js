@@ -12,6 +12,31 @@ const browse = (req, res) => {
     });
 };
 
+const showIsAvailable = (req, res) => {
+  models.vehicle
+    .isavailable()
+    .then(([results]) => {
+      res.send(results);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
+const showInMaintenance = (req, res) => {
+  models.vehicle
+    .inMaintenance()
+    .then(([results]) => {
+      res.send(results);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
+
 const read = (req, res) => {
   const { id } = req.params;
 
@@ -72,10 +97,14 @@ const destroy = (req, res) => {
     });
 };
 
+
+
 module.exports = {
   browse,
   read,
   add,
   edit,
   destroy,
+  showIsAvailable,
+  showInMaintenance
 };

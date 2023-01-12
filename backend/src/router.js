@@ -39,7 +39,12 @@ router.post("/api/vehicle", vehicleControllers.add);
 router.put("/api/vehicle/:id", vehicleControllers.edit);
 router.delete("/api/vehicle/:id", vehicleControllers.destroy);
 
-// Gestion des users
+// Fonction pour le front
+
+router.get("/api/vehicle-available", vehicleControllers.showIsAvailable);
+router.get("/api/vehicle-in-maintenance", vehicleControllers.showInMaintenance);
+
+
 router.get("/api/users", userControllers.browse);
 router.get("/api/users/:id", userControllers.read);
 router.post("/api/users", hashPassword, userControllers.add);
