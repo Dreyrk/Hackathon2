@@ -1,6 +1,6 @@
 import React from "react";
 
-import FirestationList from "@components/FirestationList";
+import FirestationList from "../components/FirestationList";
 
 function AllFireStation() {
   return (

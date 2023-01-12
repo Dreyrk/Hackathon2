@@ -20,13 +20,13 @@ export default function Sidebar() {
         <NavLink to="/login">
           <img alt="fire" className="h-12" src={FireEstinguisher} />
         </NavLink>
-        <NavLink to="/login">
+        <NavLink to="/all-fire-station">
           <img alt="fire" className="h-12" src={House} />
         </NavLink>
-        <NavLink to="/login">
+        <NavLink to="/all-truck">
           <img alt="fire" className="h-12" src={Camion} />
         </NavLink>
-        <NavLink to="/login">
+        <NavLink to="/users">
           <img alt="fire" className="h-8" src={Man} />
         </NavLink>
       </div>

@@ -9,6 +9,7 @@ import AllTruck from "../pages/AllTruck";
 import Events from "../pages/Events";
 import Vehicles from "../pages/Vehicles";
 import Login from "../pages/Login";
+import ListUsers from "../pages/ListUsers";
 
 export default function Router() {
   return (
@@ -17,10 +18,11 @@ export default function Router() {
       <Route path="/events" element={<Events />} />
       <Route path="/vehicles" element={<Vehicles />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/allTruck" element={<AllTruck />} />
-      <Route path="/allFireStation" element={<AllFireStation />} />
-      <Route path="/fireStationPage" element={<FireStationPage />} />
-      <Route path="/createuser" element={<CreateUser />} />
+      <Route path="/all-truck" element={<AllTruck />} />
+      <Route path="/all-fire-station" element={<AllFireStation />} />
+      <Route path="/fire-station-page" element={<FireStationPage />} />
+      <Route path="/users" element={<ListUsers />} />
+      <Route path="/create-user" element={<CreateUser />} />
     </Routes>
   );
 }

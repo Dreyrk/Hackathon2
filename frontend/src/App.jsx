@@ -1,7 +1,7 @@
 import { BrowserRouter } from "react-router-dom";
 import "./styles/App.css";
-import Sidebar from "@components/Sidebar";
-import Header from "@components/Header";
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
 import Router from "./components/Router";
 
 import { CurrentUserContextProvider } from "./contexts/userContext";
@@ -11,8 +11,8 @@ function App() {
     <BrowserRouter>
       <CurrentUserContextProvider>
         <Header />
-        <Sidebar />
         <Router />
+        <Sidebar />
       </CurrentUserContextProvider>
     </BrowserRouter>
   );
