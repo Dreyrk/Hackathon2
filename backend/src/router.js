@@ -35,6 +35,13 @@ router.delete("/api/caserne/:id", caserneControllers.destroy);
 // Gestion des vehicles
 router.get("/api/vehicle", vehicleControllers.browse);
 router.get("/api/vehicle/:id", vehicleControllers.read);
+router.get(
+  "/api/vehicle/firestation/:id",
+  vehicleControllers.vehiclesByFirestation
+);
+router.put("/api/vehicle/move", vehicleControllers.moveVehicle);
+router.put("/api/vehicle/maintenance", vehicleControllers.inMaintenance);
+
 router.post("/api/vehicle", vehicleControllers.add);
 router.put("/api/vehicle/:id", vehicleControllers.edit);
 router.delete("/api/vehicle/:id", vehicleControllers.destroy);
@@ -42,7 +49,13 @@ router.delete("/api/vehicle/:id", vehicleControllers.destroy);
 // Gestion des users
 router.get("/api/users", userControllers.browse);
 router.get("/api/users/:id", userControllers.read);
-router.post("/api/users", hashPassword, userControllers.add);
+router.post(
+  "/api/users",
+  verifyToken,
+  authControllers.userIsSuperAdmin,
+  hashPassword,
+  userControllers.add
+);
 router.put("/api/users/:id", hashPassword, verifyToken, userControllers.edit);
 router.delete("/api/users/:id", verifyToken, userControllers.destroy);
 

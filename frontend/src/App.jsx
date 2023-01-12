@@ -13,6 +13,7 @@ function App() {
         <Header />
         <div className="flex h-full">
           <Sidebar />
+
           <Router />
         </div>
       </CurrentUserContextProvider>
