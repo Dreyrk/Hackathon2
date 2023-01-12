@@ -12,6 +12,7 @@ const hashingOptions = {
 
 const hashPassword = (req, res, next) => {
   // hash the password using argon2 then call next()
+
   if (req.body.password) {
     argon2
       .hash(req.body.password, hashingOptions)

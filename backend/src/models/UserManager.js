@@ -20,9 +20,7 @@ class UserManager extends AbstractManager {
   }
 
   findAll() {
-    return this.connection.query(
-      `select id, firstname, lastname, email from ${this.table}`
-    );
+    return this.connection.query(`select * from ${this.table}`);
   }
 
   insert(user) {

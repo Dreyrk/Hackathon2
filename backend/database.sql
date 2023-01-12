@@ -47,8 +47,10 @@ DROP TABLE IF EXISTS `firemen`.`vehicle` ;
 
 CREATE TABLE IF NOT EXISTS `firemen`.`vehicle` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `modele` VARCHAR(100) NOT NULL,
-  `category` VARCHAR(45) NOT NULL,
+  `modele` VARCHAR
+(100) NOT NULL,
+  `category` VARCHAR
+(45) NOT NULL,
   `is_available` TINYINT NOT NULL,
   `firestation_id` INT NOT NULL,
   `in_maintenance` TINYINT NOT NULL,

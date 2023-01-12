@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import CreateUser from "@pages/CreateUser";
-import Firestations from "@pages/Firestations";
-
+import FireStationPage from "../pages/FireStationPage";
+import CreateUser from "../pages/CreateUser";
 import Home from "../pages/Home";
-import Events from "../pages/Events";
-import Vehicles from "../pages/Vehicles";
+import AllTruck from "../pages/AllTruck";
 import Login from "../pages/Login";
+import InterventionPage from "../pages/InterventionPage";
+import ListUsers from "../pages/ListUsers";
+import TruckModal from "./TruckModal";
 
 export default function Router() {
   return (
@@ -16,11 +17,13 @@ export default function Router() {
       </div>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/vehicles" element={<Vehicles />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/firestations" element={<Firestations />} />
-        <Route path="/createuser" element={<CreateUser />} />
+        <Route path="/all-truck" element={<AllTruck />} />
+        <Route path="/truck-infos" element={<TruckModal />} />
+        <Route path="/fire-station-page" element={<FireStationPage />} />
+        <Route path="/users" element={<ListUsers />} />
+        <Route path="/create-user" element={<CreateUser />} />
+        <Route path="/intervention" element={<InterventionPage />} />
       </Routes>
     </div>
   );
