@@ -17,13 +17,19 @@ export default function Sidebar() {
         </NavLink>
       </div>
       <div className=" flex flex-col justify-around items-center h-[50vh] mt-5">
-        <NavLink to="/login">
+        <NavLink to="/events">
           <img alt="fire" className="h-12" src={FireEstinguisher} />
         </NavLink>
+
         <NavLink to="/all-fire-station">
           <img alt="fire" className="h-12" src={House} />
         </NavLink>
         <NavLink to="/all-truck">
+
+        <NavLink to="/">
+          <img alt="fire" className="h-12" src={House} />
+        </NavLink>
+        <NavLink to="/vehicles">
           <img alt="fire" className="h-12" src={Camion} />
         </NavLink>
         <NavLink to="/users">
@@ -31,7 +37,7 @@ export default function Sidebar() {
         </NavLink>
       </div>
       <div className="flex flex-col justify-end h-[35vh]">
-        <NavLink to="/login">
+        <NavLink to="/createuser">
           <img alt="fire" className="h-12 m-4" src={Off} />
         </NavLink>
       </div>
