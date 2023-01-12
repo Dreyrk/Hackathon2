@@ -12,7 +12,6 @@ function Home() {
   return (
     <div className="justify-center flex-col items-center h-fit">
       <Map />
-      <Map />
     </div>
   );
 }

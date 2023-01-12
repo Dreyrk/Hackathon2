@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { useCurrentUserContext } from "../contexts/userContext";
 import createuser from "../assets/New Project(17).png";
 
@@ -13,6 +15,7 @@ export default function CreateUser() {
   const [verifPassword, setVerifPassword] = useState("");
   const [rights, setRights] = useState(0);
   const [redForm, setRedForm] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
 
   const { token } = useCurrentUserContext();
 
@@ -43,9 +46,11 @@ export default function CreateUser() {
       };
       e.preventDefault();
       // on créé un nouvel utilisateur et on reutilise
-      fetch(`${backURL}/api/users`, requestOptions).catch((err) => {
-        console.warn(err);
-      });
+      fetch(`${backURL}/api/users`, requestOptions)
+        .then(setOpenModal(true))
+        .catch((err) => {
+          console.warn(err);
+        });
     } else {
       e.preventDefault();
       const emptyFields = [];
@@ -57,6 +62,8 @@ export default function CreateUser() {
       setRedForm(emptyFields);
     }
   };
+
+  const nav = useNavigate();
 
   return (
     <div className="flex justify-around items-center h-[80vh] w-full">
@@ -240,6 +247,25 @@ export default function CreateUser() {
         alt="Firefighter on a call"
         className="h-[70vh] mt-10"
       />
+      {openModal ? (
+        <div className="h-screen w-screen absolute left-0 top-0 bg-black/60 z-40 flex justify-center items-center">
+          <div className="bg-white h-48 w-[21rem] flex flex-col justify-around items-center rounded-2xl">
+            User created
+            <button
+              type="button"
+              className="w-16 h-10 rounded bg-slate-500"
+              onClick={() => {
+                setOpenModal(false);
+                nav("/users");
+              }}
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

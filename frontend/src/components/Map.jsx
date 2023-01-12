@@ -28,7 +28,7 @@ export default function Map() {
               <button type="button" onClick={() => {}}>
                 {firestation.name} <br />
                 Capacité: {firestation.capacity}
-                <br /> 45.7627835,4.8439261
+                <br /> {firestation.latitude},{firestation.longitude}
               </button>
             </Popup>
           </Marker>

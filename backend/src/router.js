@@ -56,7 +56,12 @@ router.post(
   userControllers.add
 );
 router.put("/api/users/:id", hashPassword, verifyToken, userControllers.edit);
-router.delete("/api/users/:id", verifyToken, userControllers.destroy);
+router.delete(
+  "/api/users/:id",
+  verifyToken,
+  authControllers.userIsSuperAdmin,
+  userControllers.destroy
+);
 
 // Gestion des avatars
 router.post(
