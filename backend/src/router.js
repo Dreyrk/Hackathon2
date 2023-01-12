@@ -12,7 +12,7 @@ const {
 } = require("./services/auth");
 
 const authControllers = require("./controllers/authControllers");
-const caserneControllers = require("./controllers/caserneControllers");
+const Firestation = require("./controllers/FirestationControllers");
 const vehicleControllers = require("./controllers/vehicleControllers");
 const userControllers = require("./controllers/userControllers");
 const fileControllers = require("./controllers/fileControllers");
@@ -26,11 +26,11 @@ router.post(
 );
 
 // Gestion des casernes
-router.get("/api/caserne", verifyToken, caserneControllers.browse);
-router.get("/api/caserne/:id", caserneControllers.read);
-router.post("/api/caserne", caserneControllers.add);
-router.put("/api/caserne/:id", caserneControllers.edit);
-router.delete("/api/caserne/:id", caserneControllers.destroy);
+router.get("/api/firestation", Firestation.browse);
+router.get("/api/firestation/:id", Firestation.read);
+router.post("/api/firestation", Firestation.add);
+router.put("/api/firestation/:id", Firestation.edit);
+router.delete("/api/firestation/:id", Firestation.destroy);
 
 // Gestion des vehicles
 router.get("/api/vehicle", vehicleControllers.browse);

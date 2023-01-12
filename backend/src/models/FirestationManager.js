@@ -2,7 +2,11 @@ const AbstractManager = require("./AbstractManager");
 
 class CaserneManager extends AbstractManager {
   constructor() {
-    super({ table: "caserne" });
+    super({ table: "firestation" });
+  }
+
+  findAll() {
+    return this.connection.query(`select * from ${this.table}`);
   }
 
   insert(caserne) {

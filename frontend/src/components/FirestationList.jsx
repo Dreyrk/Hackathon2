@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-const Firestations = [
-  {
-    Picture: "Photo",
-    Name: "GostBuster",
-    Localisation: "longi/lat",
-    Capacity: "20/30",
-  },
-];
 
 export default function FirestationList() {
   const navigate = useNavigate();
+
+  const [firesta, setfiresta] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/caserne`)
+      .then((results) => results.json())
+      .then((datas) => {
+        setfiresta(datas);
+      });
+  }, []);
+
   return (
     <div className="px-4 sm:px-6 lg:px-8 mt-[2rem]">
       <div className="sm:flex sm:items-center">
@@ -61,22 +63,22 @@ export default function FirestationList() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {Firestations.map((Firestation) => (
+                  {firesta.map((Firestation) => (
                     <tr
                       key={Firestation.id}
                       onClick={() => navigate("/all-truck")}
                     >
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {Firestation.Picture}
+                        {Firestation.img}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {Firestation.Name}
+                        {Firestation.name}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {Firestation.Localisation}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {Firestation.Capacity}
+                        {Firestation.capacity}
                       </td>
                     </tr>
                   ))}
