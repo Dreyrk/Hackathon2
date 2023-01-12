@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.caserne
+  models.firestation
     .findAll()
     .then(([results]) => {
       res.send(results);
@@ -15,7 +15,7 @@ const browse = (req, res) => {
 const read = (req, res) => {
   const { id } = req.params;
 
-  models.caserne
+  models.firestation
     .find(id)
     .then(([results]) => {
       if (results[0]) res.send(results[0]);
@@ -28,10 +28,10 @@ const read = (req, res) => {
 };
 
 const add = (req, res) => {
-  const caserne = req.body;
+  const firestation = req.body;
 
-  models.caserne
-    .insert(caserne)
+  models.firestation
+    .insert(firestation)
     .then(([result]) => {
       res.location(`/api/caserne/${result.insertId}`).sendStatus(201);
     })
@@ -42,11 +42,11 @@ const add = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const caserne = req.body;
-  caserne.id = req.params.id;
+  const firestation = req.body;
+  firestation.id = req.params.id;
 
-  models.caserne
-    .update(caserne)
+  models.firestation
+    .update(firestation)
     .then(([result]) => {
       if (result.affectedRows === 0) res.sendStatus(404);
       else res.sendStatus(204);
@@ -59,7 +59,7 @@ const edit = (req, res) => {
 
 const destroy = (req, res) => {
   const { id } = req.params;
-  models.caserne
+  models.firestation
     .delete(id)
     .then(([result]) => {
       if (result.affectedRows === 0) res.sendStatus(404);

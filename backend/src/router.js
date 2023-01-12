@@ -26,7 +26,7 @@ router.post(
 );
 
 // Gestion des casernes
-router.get("/api/caserne", verifyToken, caserneControllers.browse);
+router.get("/api/caserne", caserneControllers.browse);
 router.get("/api/caserne/:id", caserneControllers.read);
 router.post("/api/caserne", caserneControllers.add);
 router.put("/api/caserne/:id", caserneControllers.edit);
