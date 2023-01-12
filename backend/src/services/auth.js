@@ -12,6 +12,7 @@ const hashingOptions = {
 
 const hashPassword = (req, res, next) => {
   // hash the password using argon2 then call next()
+
   argon2
     .hash(req.body.password, hashingOptions)
     .then((hashedPassword) => {
@@ -23,11 +24,12 @@ const hashPassword = (req, res, next) => {
       console.error(err);
       res.sendStatus(400);
     });
+  next();
 };
 
 const verifyPassword = (req, res) => {
   argon2
-    .verify(req.user.hashedPassword, req.body.password, hashingOptions)
+    .verify(req.body.hashedPassword, req.body.password, hashingOptions)
     .then((isVerified) => {
       if (isVerified) {
         const token = jwt.sign({ sub: req.user.id }, JWT_SECRET, {
