@@ -3,7 +3,6 @@
 -- -----------------------------------------------------
 -- Table `firemen`.`user`
 -- -----------------------------------------------------
-
 CREATE TABLE IF NOT EXISTS `firemen`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(100) NOT NULL,
