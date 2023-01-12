@@ -37,6 +37,7 @@ router.get("/api/vehicle", vehicleControllers.browse);
 router.get("/api/vehicle/:id", vehicleControllers.read);
 router.post("/api/vehicle", vehicleControllers.add);
 router.put("/api/vehicle/:id", vehicleControllers.edit);
+router.put("/api/vehicle/", vehicleControllers.changeavailable);
 router.delete("/api/vehicle/:id", vehicleControllers.destroy);
 
 // Gestion des users
