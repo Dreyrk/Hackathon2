@@ -11,8 +11,10 @@ function App() {
     <BrowserRouter>
       <CurrentUserContextProvider>
         <Header />
-        <Sidebar />
-        <Router />
+        <div className="flex h-full">
+          <Sidebar />
+          <Router />
+        </div>
       </CurrentUserContextProvider>
     </BrowserRouter>
   );
