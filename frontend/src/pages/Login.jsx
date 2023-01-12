@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useCurrentUserContext } from "../contexts/userContext";
 
 function Login() {
- const { setUser, setToken } = useCurrentUserContext();
+  const { setUser, setToken } = useCurrentUserContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); 
-
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -50,6 +49,7 @@ function Login() {
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <input
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Username"
               className="shadow appearance-none rounded w-full py-4 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="username"
@@ -58,6 +58,7 @@ function Login() {
           </div>
           <div className="mb-6">
             <input
+              onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               className="shadow appearance-none  rounded w-full py-4 px-3 mb-3 mt-2 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
@@ -71,10 +72,13 @@ function Login() {
             >
               <h3 className="text-lg">Sign In</h3>
             </button>
-            <p className="text-white underline cursor-pointer">Forgot Password?</p>
+            <p className="text-white underline cursor-pointer">
+              Forgot Password?
+            </p>
           </div>
         </form>
       </div>
+      <div>{errorMessage}</div>
     </div>
   );
 }
