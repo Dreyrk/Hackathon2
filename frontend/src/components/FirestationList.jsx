@@ -15,7 +15,7 @@ export default function FirestationList() {
   }, []);
 
   return (
-    <div className="w-[60rem] mt-[2rem]">
+    <div className="w-[80rem] mt-[2rem]">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Firestations</h1>
@@ -24,7 +24,7 @@ export default function FirestationList() {
           <NavLink to="/add-firestation">
             <button
               type="button"
-              className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto font-bold"
+              className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto font-bold"
             >
               Add Firestations
             </button>
@@ -35,12 +35,13 @@ export default function FirestationList() {
         <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
             <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+              font-bold
               <table className="min-w-full divide-y divide-gray-300">
                 <thead className="bg-gray-50">
                   <tr>
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900  sm:pl-6"
                     >
                       Picture
                     </th>
@@ -76,7 +77,7 @@ export default function FirestationList() {
                         {Firestation.name}
                       </td>
 
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 font-bold">
                         {Firestation.capacity}
                       </td>
                     </tr>

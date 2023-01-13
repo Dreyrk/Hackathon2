@@ -12,8 +12,6 @@ function Home() {
   });
   return (
     <div className="justify-center flex-col items-center h-fit">
-      <Map />
-      <Map />
       <div>
         <h5 className="mb-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white my-10">
           Vision globale de la flotte :

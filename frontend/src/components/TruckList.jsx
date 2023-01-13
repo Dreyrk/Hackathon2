@@ -65,14 +65,14 @@ export default function TruckList() {
                           className="w-[15rem] h-[9rem]"
                         />
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 font-bold text-sm text-gray-500">
                         {trucks.modele}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 font-bold text-sm text-gray-500">
                         {trucks.category}
                       </td>
 
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4font-bold text-sm text-gray-500">
                         {trucks.Available}
                       </td>
                     </tr>

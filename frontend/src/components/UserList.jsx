@@ -61,17 +61,17 @@ export default function UserList() {
                 <tbody className="divide-y divide-gray-200 bg-white">
                   {users.map((pilote) => (
                     <tr key={pilote.id} onClick={() => {}}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                      <td className="whitespace-nowrap font-bold py-4 pl-4 pr-3 text-sm text-gray-900 sm:pl-6">
                         {pilote.firstname}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap font-bold marker:px-3 py-4 text-sm text-gray-500">
                         {pilote.lastname}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap font-bold px-3 py-4 text-sm text-gray-500">
                         {pilote.email}
                       </td>
                       {user.rights === 2 ? (
-                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        <td className="whitespace-nowrap font-bold px-3 py-4 text-sm text-gray-500">
                           {pilote.rights}
                         </td>
                       ) : (
