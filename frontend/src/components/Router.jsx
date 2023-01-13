@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import InterventionPage from "../pages/InterventionPage";
 import AllUsers from "../pages/AllUsers";
 import TruckModal from "./TruckModal";
+import AddFireStation from "../pages/AddFireStation";
 
 import Header from "./Header";
 
@@ -25,6 +26,7 @@ export default function Router({ sidebarText }) {
         <Route path="/users" element={<AllUsers />} />
         <Route path="/create-user" element={<CreateUser />} />
         <Route path="/intervention" element={<InterventionPage />} />
+        <Route path="/add-firestation" element={<AddFireStation />} />
       </Routes>
     </div>
   );

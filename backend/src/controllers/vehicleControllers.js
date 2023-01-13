@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const models = require("../models");
 
 const browse = (req, res) => {
@@ -35,6 +36,21 @@ const add = (req, res) => {
     .insert(vehicle)
     .then(([result]) => {
       res.location(`/api/vehicle/${result.insertId}`).sendStatus(201);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
+const changeavailable = (req, res) => {
+  const { is_available, id } = req.body;
+
+  models.vehicle
+    .isavailable(is_available, id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) res.sendStatus(404);
+      else res.sendStatus(204);
     })
     .catch((error) => {
       console.error(error);
@@ -119,6 +135,7 @@ module.exports = {
   add,
   edit,
   destroy,
+  changeavailable,
   vehiclesByFirestation,
   moveVehicle,
   inMaintenance,

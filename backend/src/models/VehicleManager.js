@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const AbstractManager = require("./AbstractManager");
 
 class VehicleManager extends AbstractManager {
@@ -35,6 +36,13 @@ class VehicleManager extends AbstractManager {
         vehicle.firestation_id,
         vehicle.id,
       ]
+    );
+  }
+
+  isavailable(is_available, id) {
+    return this.connection.query(
+      `UPDATE ${this.table} SET is_available = ? WHERE id = ?`,
+      [is_available, id]
     );
   }
 
