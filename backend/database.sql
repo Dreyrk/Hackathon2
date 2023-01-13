@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS `firemen`.`firestation` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(200) NOT NULL,
   `capacity` INT NOT NULL,
-  `longitude` DECIMAL NOT NULL,
-  `latitude` DECIMAL NOT NULL,
+  `longitude` varchar(50) NOT NULL,
+  `latitude` varchar(50) NOT NULL,
   `img` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
@@ -74,12 +74,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 INSERT INTO firestation (name, capacity, latitude, longitude, img) VALUES
-('Caserne Lyon-Confluence', 10,  45.7468624, 4.8258056,"https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg" ),
-('Centre dintervention Lyon Corneille', 10,  45.7627835 , 4.8439261, "https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg"),
-('Centre dintervention Lyon Rochat', 10,  45.7500822 , 4.8480699, "https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg"),
-('Caserne Lyon - Gerland', 45.7316551, 10, 4.8284384, "https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg"),
-('Centre dintervention Lyon Croix-Rousse', 10, 45.778717 , 4.820501, "https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg"),
-('Rhône Sapeurs Pompiers', 45.762685 , 10, 4.8445398, "https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg");
+('Caserne Lyon-Confluence', 10,  "45.7468624", "4.8258056","https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg" ),
+('Centre dintervention Lyon Corneille', 10,  "45.7627835" , "4.8439261", "https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg"),
+('Centre dintervention Lyon Rochat', 10,  "45.7500822" , "4.8480699", "https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg"),
+('Caserne Lyon - Gerland', 10, "45.7316551", "4.8284384", "https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg"),
+('Centre dintervention Lyon Croix-Rousse', 10, "45.778717" , "4.820501", "https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg"),
+('Rhône Sapeurs Pompiers' , 10, "45.762685", "4.8445398", "https://www.wmfs.net/wp-content/uploads/2021/12/Stourbridge-Fire-Station-1024x683.jpg");
 
 INSERT INTO vehicle (modele, category,is_available,firestation_id,in_maintenance, summary ,img)
 VALUEs
@@ -109,3 +109,35 @@ VALUEs
 ('IVECO', 'FPT', 0, 3, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
 ('Renault', 'CCF', 0, 2, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
 ('Renault', 'CCF', 0, 1, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg");
+
+
+INSERT INTO `firemen`.`user`
+(`id`,
+`firstname`,
+`lastname`,
+`email`,
+`rights`,
+`hashedPassword`)
+VALUES
+('1', 'User', 'User', 'user@pompiers.fr', '0', '$argon2id$v=19$m=65536,t=5,p=1$Fi2Bsf79CUlUJYlkEyV2kg$jI9qmJgDqx9NQ2b3JHUnNr+YEmVGuaJk0afnUMtRl/A'
+);
+INSERT INTO `firemen`.`user`
+(`id`,
+`firstname`,
+`lastname`,
+`email`,
+`rights`,
+`hashedPassword`)
+VALUES
+('2', 'Admin', 'Admin', 'admin@pompiers.fr', '1', '$argon2id$v=19$m=65536,t=5,p=1$o/cj56tUKe1axW12mRLaWw$gEL+vQYtw4N8+9U0hqaAqkEhRRaH0yEKTiPDaTctTp4'
+);
+INSERT INTO `firemen`.`user`
+(`id`,
+`firstname`,
+`lastname`,
+`email`,
+`rights`,
+`hashedPassword`)
+VALUES
+('3', 'SuperAdmin', 'SuperAdmin', 'superadmin@pompiers.fr', '2', '$argon2id$v=19$m=65536,t=5,p=1$liOJSGrJ5B3j8400pcZnrw$nIuEDSec7SVGanfniDMsaY4Qa8hYgUSaJe2XaKmZOJo'
+);

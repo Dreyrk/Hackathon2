@@ -3,21 +3,51 @@ import React, { useEffect, useState } from "react";
 import { useTicketContext } from "../contexts/interventionTicketContext";
 
 export default function TicketIntervention() {
+  const backURL = import.meta.env.VITE_BACKEND_URL;
+
   const { ticket, setTicket } = useTicketContext();
   const [firestation, setFirestation] = useState([]);
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
+  const [index, setIndex] = useState(0);
+  const [trucks, setTrucks] = useState([]);
+
+  useEffect(() => {
+    fetch(`${backURL}/api/vehicle`)
+      .then((res) => res.json())
+      .then((vehicles) => setTrucks(vehicles))
+      .catch((e) => console.error(e));
+  }, []);
 
   const tickets = [];
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/caserne")
+    fetch("http://localhost:5000/api/firestation")
       .then((res) => res.json())
-      .then((firestations) => setFirestation(firestations));
+      .then((firestations) => setFirestation(firestations))
+      .catch((e) => console.error(e));
   }, []);
 
+  const handleSubmit = () => {
+    const selectedTruckName = trucks[index].modele;
+    const selectedTruckCategory = trucks[index].category;
+    const selectedTruckImg = trucks[index].img;
+    setTicket({
+      ...ticket,
+      fstationLatitude: latitude,
+      fstationLongitude: longitude,
+      truck: {
+        modele: selectedTruckName,
+        category: selectedTruckCategory,
+        img: selectedTruckImg,
+      },
+    });
+    tickets.push(ticket);
+    console.log(tickets);
+  };
+
   return (
-    <div className=" flex-col  justify-center   p-10 mt-20 bg-white border border-gray-200 rounded-lg shadow-md  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div className=" flex-col h-full justify-center   p-10 mt-20 bg-white border border-gray-200 rounded-lg shadow-md  dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
       <div>
         <h1 className=" mb-10 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           Ticket d'opération :
@@ -92,7 +122,7 @@ export default function TicketIntervention() {
               setLatitude(e.target.value);
             }}
           >
-            <option value="">-------Choose firestation--------</option>
+            <option value="">Choose firestation</option>
             {firestation.map((fstation) => (
               <option key={fstation.id} value={fstation.latitude}>
                 {fstation.name}
@@ -107,7 +137,7 @@ export default function TicketIntervention() {
               setLongitude(e.target.value);
             }}
           >
-            <option value="">-------Confirm firestation--------</option>
+            <option value="">Confirm firestation</option>
             {firestation.map((fstation) => (
               <option key={fstation.id} value={fstation.longitude}>
                 {fstation.name}
@@ -116,19 +146,34 @@ export default function TicketIntervention() {
           </select>
         </label>
       </div>
-      <div className="w-full flex justify-end mt-10">
+      <div>
+        <h5>Truck :</h5>
+        <select
+          onChange={(e) => setIndex(e.target.value)}
+          className="border-2 border-black shadow-sm"
+          name="truck"
+        >
+          {trucks.map((truck, i) => {
+            return (
+              <option value={i}>
+                {truck.modele} assigné à la catégorie :{truck.category}
+              </option>
+            );
+          })}
+        </select>
+        <div>
+          <textarea
+            className="mt-4 h-24 w-full"
+            onChange={(e) =>
+              setTicket({ ...ticket, description: e.target.value })
+            }
+            placeholder="Enter a description of the incident..."
+          />
+        </div>
         <button
           type="button"
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-4"
-          onClick={() => {
-            setTicket({
-              ...ticket,
-              fstationLatitude: latitude,
-              fstationLongitude: longitude,
-            });
-            tickets.push(ticket);
-            console.log(tickets);
-          }}
+          onClick={handleSubmit}
         >
           Submit
         </button>

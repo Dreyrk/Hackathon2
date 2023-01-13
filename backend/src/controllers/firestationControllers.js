@@ -33,7 +33,7 @@ const add = (req, res) => {
   models.firestation
     .insert(firestation)
     .then(([result]) => {
-      res.location(`/api/caserne/${result.insertId}`).sendStatus(201);
+      res.location(`/api/firestation/${result.insertId}`).sendStatus(201);
     })
     .catch((error) => {
       console.error(error);
