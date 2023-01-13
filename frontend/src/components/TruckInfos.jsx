@@ -11,7 +11,7 @@ export default function TruckInfos({ description }) {
           </h2>
           <img
             className="h-60 w-96"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Pompiers_Strasbourg_-_Renault_Midlum-5.JPG/1200px-Pompiers_Strasbourg_-_Renault_Midlum-5.JPG"
+            src="https://upload.wikimedia.org/wikipedia/commons/7/76/Fourgon_pompe-tonne_%28FPT%29_-_Pompiers.png"
             alt="camion"
           />
         </div>
