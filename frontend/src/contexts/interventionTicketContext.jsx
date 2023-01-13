@@ -5,12 +5,13 @@ const interventionTicketContext = createContext();
 
 export function TicketContextProvider({ children }) {
   const [ticket, setTicket] = useState({
+    fstationId: 0,
     type: "",
     level: 0,
-    localisation: [],
+    fstationLatitude: 0,
+    fstationLongitude: 0,
     description: "",
   });
-
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     <interventionTicketContext.Provider value={{ ticket, setTicket }}>

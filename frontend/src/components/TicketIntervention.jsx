@@ -4,11 +4,10 @@ import { useTicketContext } from "../contexts/interventionTicketContext";
 
 export default function TicketIntervention() {
   const { ticket, setTicket } = useTicketContext();
-
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
-  const [index, setIndex] = useState(0);
   const [firestation, setFirestation] = useState([]);
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
+
   const tickets = [];
 
   useEffect(() => {
@@ -89,40 +88,32 @@ export default function TicketIntervention() {
             className="border-2 border-black"
             name="type"
             onChange={(e) => {
-              const selectedLongitude = e.target.value;
-              setIndex(selectedLongitude);
-              console.log(firestation[selectedLongitude]);
-            }}
-          >
-            <option value="">
-              -------Choose the intervention type--------
-            </option>
-            {firestation.map((fstation, i) => (
-              <option value={i}>{fstation.name}</option>
-            ))}
-          </select>
-        </label>
-      </div>
-      <div>
-        <label htmlFor="coord">
-          Coordonnée X :
-          <input
-            className="border-2"
-            type="text"
-            onChange={(e) => {
+              console.log(e.target.value);
               setLatitude(e.target.value);
             }}
-          />
-        </label>
-        <label htmlFor="coord">
-          Coordonnée Y :
-          <input
-            className="border-2"
-            type="text"
+          >
+            <option value="">-------Choose firestation--------</option>
+            {firestation.map((fstation) => (
+              <option key={fstation.id} value={fstation.latitude}>
+                {fstation.name}
+              </option>
+            ))}
+          </select>
+          <select
+            className="border-2 border-black"
+            name="type"
             onChange={(e) => {
+              console.log(e.target.value);
               setLongitude(e.target.value);
             }}
-          />
+          >
+            <option value="">-------Confirm firestation--------</option>
+            {firestation.map((fstation) => (
+              <option key={fstation.id} value={fstation.longitude}>
+                {fstation.name}
+              </option>
+            ))}
+          </select>
         </label>
       </div>
       <div className="w-full flex justify-end mt-10">
@@ -130,10 +121,11 @@ export default function TicketIntervention() {
           type="button"
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 my-4"
           onClick={() => {
-            setLatitude(firestation[index].latitude);
-            setLongitude(firestation[index].longitude);
-            ticket.localisation.push(latitude);
-            ticket.localisation.push(longitude);
+            setTicket({
+              ...ticket,
+              fstationLatitude: latitude,
+              fstationLongitude: longitude,
+            });
             tickets.push(ticket);
             console.log(tickets);
           }}
