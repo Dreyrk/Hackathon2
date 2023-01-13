@@ -1,21 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Trucks = [
-  {
-    Picture: "Photo",
-    Name: "la vega mobile",
-    Localisation: "caserne 3",
-    Km: "150 000km",
-    Available: "maybe",
-  },
-];
-
 export default function TruckList() {
+  const [truck, setTruck] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/vehicle`)
+      .then((results) => results.json())
+      .then((datas) => {
+        setTruck(datas);
+      });
+  }, []);
+
   const navigate = useNavigate();
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-8 w-[80rem]">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Truck</h1>
@@ -46,12 +46,7 @@ export default function TruckList() {
                     >
                       Localisation
                     </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Km
-                    </th>
+
                     <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
@@ -61,22 +56,24 @@ export default function TruckList() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {Trucks.map((Truck) => (
-                    <tr key={Truck.id} onClick={() => navigate("/truck-infos")}>
+                  {truck.map((trucks) => (
+                    <tr key={truck.id} onClick={() => navigate("/truck-infos")}>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {Truck.Picture}
+                        <img
+                          src={trucks.img}
+                          alt=""
+                          className="w-[15rem] h-[9rem]"
+                        />
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {Truck.Name}
+                        {trucks.modele}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {Truck.Localisation}
+                        {trucks.category}
                       </td>
+
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {Truck.Km}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {Truck.Available}
+                        {trucks.Available}
                       </td>
                     </tr>
                   ))}
