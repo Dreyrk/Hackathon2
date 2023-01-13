@@ -11,12 +11,12 @@ export default function Sidebar({ setSidebarText }) {
       <div className=" flex flex-col justify-start items-center h-full w-full bg-[#54555A]">
         <div className="h-[10vh] flex items-center">
           {" "}
-          <NavLink to="/login">
+          <NavLink to="/intervention">
             <img alt="fire" className="h-[9vh] bg-[#54555A]" src={Off} />
           </NavLink>
         </div>
         <NavLink
-          to="/login"
+          to="/dashboard"
           className="h-[8vh] border-y border-slate-400/50 w-full flex justify-center items-center text-white text-lg joe"
           onClick={() => setSidebarText("Dashboard")}
         >
