@@ -84,31 +84,31 @@ INSERT INTO firestation (name, capacity, latitude, longitude, img) VALUES
 INSERT INTO vehicle (modele, category,is_available,firestation_id,in_maintenance, summary ,img)
 VALUEs
 (
-'Renault',
-'VSAV',
+'Renault VSAV',
+'medicale',
 0,
 1,
 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"
 ),
-('Renault', 'VSAV', 0, 2, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Man', 'VSAV', 0, 3, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Man', 'VSAV', 0, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Renault', 'VSR', 0, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Renault', 'VSR', 0, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Mitsubishi', 'VSR', 0, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Mitsubishi', 'VSR', 0, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Mercedes', 'EPA', 0, 5, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Mercedes', 'EPA', 0, 2, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('IVECO', 'EPA', 0, 1, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('IVECO', 'EPA', 0, 3, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Mercedes', 'FPT', 0, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Mercedes', 'FPT', 0, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Mercedes', 'FPT', 0, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('IVECO', 'FPT', 0, 5, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('IVECO', 'FPT', 0, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('IVECO', 'FPT', 0, 3, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Renault', 'CCF', 0, 2, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
-('Renault', 'CCF', 0, 1, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg");
+('Renault VSAV', 'medicale', 1, 2, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Man VSAV', 'medicale', 1, 3, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Man VSAV', 'medicale', 1, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Renault VSR', 'route', 1, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Renault VSR', 'route', 1, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Mitsubishi VSR', 'route', 1, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Mitsubishi VSR', 'route', 1, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Mercedes EPA', 'assistance', 1, 5, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Mercedes EPA', 'assistance', 1, 2, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('IVECO EPA', 'incendie', 1, 1, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('IVECO EPA', 'incendie', 1, 3, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Mercedes FPT', 'incendie', 1, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Mercedes FPT', 'incendie', 1, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Mercedes FPT', 'incendie', 1, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('IVECO FPT', 'incendie', 1, 5, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('IVECO FPT', 'incendie', 1, 4, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('IVECO FPT', 'incendie', 1, 3, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Renault CCF', 'assistance', 1, 2, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg"),
+('Renault CCF', 'assistance', 1, 1, 0, "un camion", "https://upload.wikimedia.org/wikipedia/commons/4/4f/LFB_Pump_Ladder.jpg");
 
 
 INSERT INTO `firemen`.`user`

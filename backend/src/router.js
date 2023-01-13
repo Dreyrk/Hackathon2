@@ -39,6 +39,11 @@ router.get(
   "/api/vehicle/firestation/:id",
   vehicleControllers.vehiclesByFirestation
 );
+router.get(
+  "/api/vehicle/category/:category",
+  vehicleControllers.findVehiclesByCat
+);
+
 router.put("/api/vehicle/move", vehicleControllers.moveVehicle);
 router.put("/api/vehicle/maintenance", vehicleControllers.inMaintenance);
 

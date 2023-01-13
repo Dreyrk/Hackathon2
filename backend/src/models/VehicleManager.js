@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const AbstractManager = require("./AbstractManager");
 
 class VehicleManager extends AbstractManager {
@@ -57,6 +58,17 @@ class VehicleManager extends AbstractManager {
     return this.connection.query(
       `UPDATE ${this.table} SET in_maintenance = ? WHERE id = ? `,
       [value, id]
+    );
+  }
+
+  getCasernsVehiclesByCat(category) {
+    return this.connection.query(
+      `select f.id, count(v.id) as vehicles, f.latitude, f.longitude, f.name from vehicle as v
+      inner join firestation as f on v.firestation_id = f.id
+      where v.category=? and v.is_available = 1
+      group by f.id
+      ;`,
+      [category]
     );
   }
 }

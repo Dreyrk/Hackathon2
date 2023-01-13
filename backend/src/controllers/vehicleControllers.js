@@ -113,6 +113,19 @@ const inMaintenance = (req, res) => {
     });
 };
 
+const findVehiclesByCat = (req, res) => {
+  const { category } = req.params;
+  models.vehicle
+    .getCasernsVehiclesByCat(`${category}`)
+    .then(([results]) => {
+      res.send(results);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
@@ -122,4 +135,5 @@ module.exports = {
   vehiclesByFirestation,
   moveVehicle,
   inMaintenance,
+  findVehiclesByCat,
 };
