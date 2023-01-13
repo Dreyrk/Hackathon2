@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import React from "react";
 import { NavLink } from "react-router-dom";
 
-const backURL = import.meta.env.VITE_BACKEND_URL;
-
-export default function UserList() {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    fetch(`${backURL}/api/users`)
-      .then((response) => response.json())
-      .then((datas) => setUsers(datas));
-  }, []);
+export default function UserList({ users }) {
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
