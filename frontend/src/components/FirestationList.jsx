@@ -1,19 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
-const Firestations = [
-  {
-    Picture: "Photo",
-    Name: "GostBuster",
-    Localisation: "longi/lat",
-    Capacity: "20/30",
-  },
-];
 
 export default function FirestationList() {
   const navigate = useNavigate();
+
+  const [firesta, setfiresta] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/firestation`)
+      .then((results) => results.json())
+      .then((datas) => {
+        setfiresta(datas);
+      });
+  }, []);
+
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="w-[60rem] mt-[2rem]">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Firestations</h1>
@@ -46,12 +48,7 @@ export default function FirestationList() {
                     >
                       Name
                     </th>
-                    <th
-                      scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >
-                      Localisation
-                    </th>
+
                     <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
@@ -61,22 +58,24 @@ export default function FirestationList() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {Firestations.map((Firestation) => (
+                  {firesta.map((Firestation) => (
                     <tr
                       key={Firestation.id}
                       onClick={() => navigate("/all-truck")}
                     >
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {Firestation.Picture}
+                        <img
+                          src={Firestation.img}
+                          alt=""
+                          className="w-[15rem] h-[10rem]"
+                        />
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {Firestation.Name}
+                        {Firestation.name}
                       </td>
+
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {Firestation.Localisation}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {Firestation.Capacity}
+                        {Firestation.capacity}
                       </td>
                     </tr>
                   ))}

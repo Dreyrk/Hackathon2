@@ -47,11 +47,7 @@ export default function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker
-          position={[45.74462890625, 4.8254523277282715]}
-          icon={icon}
-          draggable="true"
-        >
+        <Marker position={[45.74462890625, 4.8254523277282715]} icon={icon}>
           <Popup>
             Fire <br />
             There is a fire at Wild Code School, the devs are too hot

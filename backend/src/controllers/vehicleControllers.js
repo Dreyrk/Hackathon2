@@ -1,8 +1,33 @@
+/* eslint-disable camelcase */
 const models = require("../models");
 
 const browse = (req, res) => {
   models.vehicle
     .findAll()
+    .then(([results]) => {
+      res.send(results);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
+const showIsAvailable = (req, res) => {
+  models.vehicle
+    .isavailable()
+    .then(([results]) => {
+      res.send(results);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
+const showInMaintenance = (req, res) => {
+  models.vehicle
+    .inMaintenance()
     .then(([results]) => {
       res.send(results);
     })
@@ -35,6 +60,21 @@ const add = (req, res) => {
     .insert(vehicle)
     .then(([result]) => {
       res.location(`/api/vehicle/${result.insertId}`).sendStatus(201);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
+const changeavailable = (req, res) => {
+  const { is_available, id } = req.body;
+
+  models.vehicle
+    .editIsAavailable(is_available, id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) res.sendStatus(404);
+      else res.sendStatus(204);
     })
     .catch((error) => {
       console.error(error);
@@ -102,7 +142,7 @@ const moveVehicle = (req, res) => {
 const inMaintenance = (req, res) => {
   const { id, value } = req.body;
   models.vehicle
-    .inMaintenance(id, value)
+    .updateInMaintenance(id, value)
     .then(([result]) => {
       if (result.affectedRows === 0) res.sendStatus(404);
       else res.sendStatus(204);
@@ -126,14 +166,30 @@ const findVehiclesByCat = (req, res) => {
     });
 };
 
+const getForDemo = (req, res) => {
+  models.vehicle
+    .getForDemo()
+    .then(([results]) => {
+      res.send(results);
+    })
+    .catch((error) => {
+      console.error(error);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   add,
   edit,
   destroy,
+  changeavailable,
   vehiclesByFirestation,
   moveVehicle,
   inMaintenance,
+  showIsAvailable,
+  showInMaintenance,
   findVehiclesByCat,
+  getForDemo,
 };

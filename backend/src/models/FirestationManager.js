@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class CaserneManager extends AbstractManager {
+class firestationManager extends AbstractManager {
   constructor() {
     super({ table: "firestation" });
   }
@@ -9,21 +9,32 @@ class CaserneManager extends AbstractManager {
     return this.connection.query(`select * from ${this.table}`);
   }
 
-  insert(caserne) {
+  insert(firestation) {
     return this.connection.query(
-      `INSERT INTO ${this.table} (capacity, longitude, latitude)
-    VALUES(?,?,?)`,
-      [caserne.capacity, caserne.longitude, caserne.latitude]
+      `INSERT INTO ${this.table} (name, capacity, longitude, latitude, img)
+    VALUES(?,?,?,?,?)`,
+      [
+        firestation.name,
+        firestation.capacity,
+        firestation.longitude,
+        firestation.latitude,
+        firestation.img,
+      ]
     );
   }
 
-  update(caserne) {
+  update(firestation) {
     return this.connection.query(
       `UPDATE ${this.table} SET capacity = ?, longitude = ?,
       latitude = ? WHERE id = ? `,
-      [caserne.capacity, caserne.longitude, caserne.latitude, caserne.id]
+      [
+        firestation.capacity,
+        firestation.longitude,
+        firestation.latitude,
+        firestation.id,
+      ]
     );
   }
 }
 
-module.exports = CaserneManager;
+module.exports = firestationManager;
