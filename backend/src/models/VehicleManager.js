@@ -39,7 +39,7 @@ class VehicleManager extends AbstractManager {
     );
   }
 
-  EditIsAavailable(is_available, id) {
+  editIsAavailable(is_available, id) {
     return this.connection.query(
       `UPDATE ${this.table} SET is_available = ? WHERE id = ?`,
       [is_available, id]

@@ -71,7 +71,7 @@ const changeavailable = (req, res) => {
   const { is_available, id } = req.body;
 
   models.vehicle
-    .isavailable(is_available, id)
+    .editIsAavailable(is_available, id)
     .then(([result]) => {
       if (result.affectedRows === 0) res.sendStatus(404);
       else res.sendStatus(204);
@@ -142,7 +142,7 @@ const moveVehicle = (req, res) => {
 const inMaintenance = (req, res) => {
   const { id, value } = req.body;
   models.vehicle
-    .inMaintenance(id, value)
+    .updateInMaintenance(id, value)
     .then(([result]) => {
       if (result.affectedRows === 0) res.sendStatus(404);
       else res.sendStatus(204);
