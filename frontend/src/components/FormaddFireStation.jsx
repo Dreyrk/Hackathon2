@@ -29,76 +29,87 @@ function FormaddFireStation() {
   };
 
   return (
-    <div className="mt-[5rem] h-screen">
+    <div className="flex flex-col justify-center items-center h-[40vh] w-full mt-[5rem]">
       <form
-        className="my-[2rem] w-[60rem] border border-gray-700 rounded-[1.5rem] p-5"
+        className="flex flex-col my-[2rem] w-full border border-gray-700 p-5"
         onSubmit={handleform}
       >
-        <h1 className="my-[2rem]">Add Fire Station</h1>
-
-        <label>
-          Name
-          <div>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              className="form-control relative block w-full appearance-none bg-transparent rounded-full border border-gray-300 px-3 py-2 text-black placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-        </label>
-        <label className="flex flex-col justify-center text-black my-[2rem]">
-          Capacity
-          <div className="flex flex-row-reverse border rounded-[3rem]  h-[90%]">
-            <input
-              type="text"
-              name="Capacity"
-              id="Capacity"
-              className="form-control relative blok w-full appearance-none bg-transparent rounded-full border border-gray-300 px-3 py-2 text-black placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              onChange={(e) => setCapacity(e.target.value)}
-            />
-          </div>
-        </label>
-        <label className="flex flex-col justify-center text-black my-[1rem]">
-          Longitude
-          <div className="flex flex-row-reverse border rounded-[3rem]  h-[90%]">
-            <input
-              type="text"
-              name="longitude"
-              id="longitude"
-              className="form-control relative block w-full appearance-none bg-transparent rounded-full border border-gray-300 px-3 py-2 text-black placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              onChange={(e) => setLongitude(e.target.value)}
-            />
-          </div>
-        </label>
-        <label className="flex flex-col justify-center text-black  my-[1rem]">
-          latitude
-          <div className="flex flex-row-reverse align-baseline border rounded-[1.75rem]  h-[90%]">
-            <input
-              type="text"
-              name="latitude"
-              className="form-control relative block w-full appearance-none bg-transparent rounded-full border border-gray-300 px-3 py-2 text-black placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-              onChange={(e) => setLatidute(e.target.value)}
-            />
-          </div>
-        </label>
-        <label>
-          Picture
-          <div>
-            <input
-              onChange={(e) => setImg(e.target.value)}
-              type="text"
-              name="img"
-              id="img"
-              className="form-control relative block "
-            />
-          </div>
-        </label>
+        <h1 className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-6">
+          Add Fire Station
+        </h1>
+        <div>
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            Name
+            <div>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                className="appearance-none block w-[36rem] bg-gray-200 text-gray-700 border py-1"
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+          </label>
+        </div>
+        <div>
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            Capacity
+            <div className="flex flex-row-reverse border h-[90%]">
+              <input
+                type="text"
+                name="Capacity"
+                id="Capacity"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border py-1"
+                onChange={(e) => setCapacity(e.target.value)}
+              />
+            </div>
+          </label>
+        </div>
+        <div>
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            Longitude
+            <div>
+              <input
+                type="text"
+                name="longitude"
+                id="longitude"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border py-1"
+                onChange={(e) => setLongitude(e.target.value)}
+              />
+            </div>
+          </label>
+        </div>
+        <div>
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            latitude
+            <div className="flex flex-row-reverse align-baseline border h-[90%]">
+              <input
+                type="text"
+                name="latitude"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border py-1"
+                onChange={(e) => setLatidute(e.target.value)}
+              />
+            </div>
+          </label>
+        </div>
+        <div>
+          <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+            URL Picture
+            <div>
+              <input
+                onChange={(e) => setImg(e.target.value)}
+                type="text"
+                name="img"
+                id="img"
+                className="appearance-none block w-full bg-gray-200 text-gray-700 border py-1"
+              />
+            </div>
+          </label>
+        </div>
         <div className="flex justify-center w-full ">
           <button
             type="submit"
-            className="rounded-3xl bg-gray-700 align-middle font-main-font text-[32px] py-1 px-6"
+            className="block appearance-none w-40 bg-gray-600 border border-gray-200 text-slate-200 rounded leading-tight focus:outline-none focus:border-gray-500 h-12 text-center hover:bg-[#293A4E] mt-2"
           >
             Send
           </button>
