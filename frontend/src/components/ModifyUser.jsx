@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 import { useCurrentUserContext } from "../contexts/userContext";
+import UserList from "./UserList";
 
 const backURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -42,7 +43,9 @@ export default function ModifyUser({ users, setUsers }) {
           className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
           name="to delete"
           id="to delete"
-          onChange={(e) => changeDelete(e)}
+          onChange={(e) => {
+            changeDelete(e);
+          }}
         >
           {users.map((operator) => (
             <option className="h-10" key={operator.id} value={operator.id}>
@@ -81,6 +84,9 @@ export default function ModifyUser({ users, setUsers }) {
                 No
               </button>
             </div>
+          </div>
+          <div>
+            <UserList users={toDelete} />
           </div>
         </div>
       ) : (

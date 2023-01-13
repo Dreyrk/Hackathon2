@@ -1,20 +1,24 @@
-import React, { useContext, createContext, useState } from "react";
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { useContext, createContext, useState, useMemo } from "react";
 import PropTypes from "prop-types";
 
 const interventionTicketContext = createContext();
 
 export function TicketContextProvider({ children }) {
   const [ticket, setTicket] = useState({
-    fstationId: 0,
+    truck: {
+      modele: "",
+      category: "",
+      img: "",
+    },
     type: "",
     level: 0,
-    fstationLatitude: 0,
-    fstationLongitude: 0,
     description: "",
   });
+
+  const value = useMemo(() => ({ ticket, setTicket }));
   return (
-    // eslint-disable-next-line react/jsx-no-constructed-context-values
-    <interventionTicketContext.Provider value={{ ticket, setTicket }}>
+    <interventionTicketContext.Provider value={value}>
       {children}
     </interventionTicketContext.Provider>
   );

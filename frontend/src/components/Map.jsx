@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import L from "leaflet";
+
+import fire from "../assets/flame.png";
 
 const backURL = import.meta.env.VITE_BACKEND_URL;
 
+const icon = L.icon({
+  iconSize: [35, 35],
+  iconAnchor: [10, 41],
+  popupAnchor: [8, -40],
+  iconUrl: fire,
+});
+
 export default function Map() {
   const [firestations, setFirestations] = useState([]);
-  const [interventionType, setInterventionType] = useState("");
+  const [interventionType, setInterventionType] = useState("incendie");
   useEffect(() => {
     fetch(`${backURL}/api/vehicle/category/${interventionType}`)
       .then((result) => result.json())
@@ -13,6 +25,8 @@ export default function Map() {
         setFirestations(datas);
       });
   }, [interventionType]);
+
+  const nav = useNavigate();
 
   const handleChange = (e) => {
     setInterventionType(e.target.value);
@@ -28,13 +42,20 @@ export default function Map() {
           <option value="assistance">Assistance à personne en danger</option>
         </select>
       </div>
-      <MapContainer center={[45.764043, 4.835659]} zoom={13}>
+      <MapContainer center={[45.74462890625, 4.8254523277282715]} zoom={13}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[45.764043, 4.835659]} draggable="true">
-          <Popup>LE popup</Popup>
+        <Marker
+          position={[45.74462890625, 4.8254523277282715]}
+          icon={icon}
+          draggable="true"
+        >
+          <Popup>
+            Fire <br />
+            There is a fire at Wild Code School, the devs are too hot
+          </Popup>
         </Marker>
 
         {firestations.map((firestation) => (
@@ -46,7 +67,7 @@ export default function Map() {
               <button
                 type="button"
                 onClick={() => {
-                  fetch();
+                  nav(`/firestation/${firestation.id}`);
                 }}
               >
                 {firestation.name} <br />

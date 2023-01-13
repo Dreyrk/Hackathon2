@@ -32,7 +32,7 @@ function Login() {
         .then((result) => {
           setUser(result.user);
           setToken(result.token);
-          navigate("/");
+          navigate("/intervention");
         })
         .catch(console.error);
     } else {

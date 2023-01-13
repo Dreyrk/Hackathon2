@@ -25,6 +25,7 @@ export default function Router({ sidebarText }) {
         <Route path="/users" element={<AllUsers />} />
         <Route path="/create-user" element={<CreateUser />} />
         <Route path="/intervention" element={<InterventionPage />} />
+        <Route path="/firestation/1" element={<AllTruck />} />
       </Routes>
     </div>
   );
